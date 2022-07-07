@@ -34,6 +34,7 @@ try {
       cmd: [
         'deno',
         'run',
+        '--allow-read',
         '--allow-net',
         '--allow-env',
         test
