@@ -1,7 +1,6 @@
 import "https://deno.land/std@0.147.0/dotenv/load.ts";
-
-import { Client } from "pg";
-import { getTests } from "helpers";
+import { Client } from "https://deno.land/x/postgres@v0.16.1/mod.ts";
+import { getTests } from "./helpers/index.ts";
 
 // Check if pgTap is installed
 try {

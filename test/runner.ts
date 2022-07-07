@@ -1,7 +1,6 @@
 import "https://deno.land/std@0.147.0/dotenv/load.ts";
-
-import { Client } from "pg";
-import { TestContext } from 'types'
+import { Client } from "https://deno.land/x/postgres@v0.16.1/mod.ts";
+import { TestContext } from '../types/index.ts'
 
 async function runner(name: string, f: (context: TestContext) => void) {
   console.log(`Running: ${name}`)
