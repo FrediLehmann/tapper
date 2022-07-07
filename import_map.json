@@ -1,0 +1,7 @@
+{
+  "imports": {
+    "pg": "https://deno.land/x/postgres@v0.16.1/mod.ts",
+    "types": "./types/index.ts",
+    "helpers": "./helpers/index.ts"
+  }
+}
