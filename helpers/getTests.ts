@@ -8,7 +8,6 @@ export default async function getTests(directory = ".") {
 
   try {
     for await (const entry of Deno.readDir(directory)) {
-      console.log(entry)
       if (entry.isSymlink) continue
 
       if (entry.isDirectory) {
