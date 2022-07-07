@@ -43,9 +43,7 @@ try {
       stderr: "piped",
     })
 
-    console.log('process')
     const { code } = await process.status();
-    console.log(code)
 
     if (code !== 0) {
       const msg = new TextDecoder().decode(await process.stderrOutput())
