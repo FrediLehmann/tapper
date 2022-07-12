@@ -14,7 +14,7 @@ export default class ProgressLogger {
     console.clear()
     await Deno.stdout.write(this.texts[this.current])
 
-    this.current++
+    this.current === this.texts.length - 1 ? this.current = 0 : this.current++
   }
 
   public start = () => {
