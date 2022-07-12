@@ -1,9 +1,13 @@
 import "https://deno.land/std@0.147.0/dotenv/load.ts";
 import { Client } from "https://deno.land/x/postgres@v0.16.1/mod.ts";
 import { getTests } from "./helpers/index.ts";
+import { ProgressLogger } from "./types/index.ts";
+
+let logger = new ProgressLogger(['⏳ Checking pgTap·..', '⏳ Checking pgTap.·.', '⏳ Checking pgTap..·'])
 
 // Check if pgTap is installed
 try {
+  logger.start()
   const client = new Client()
 
   await client.connect();
@@ -23,6 +27,9 @@ try {
 catch (_e) {
   console.error(_e)
   Deno.exit(1)
+}
+finally {
+  logger.stop()
 }
 
 // Run tests
