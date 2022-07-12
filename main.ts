@@ -37,6 +37,8 @@ try {
   const tests = await getTests();
 
   for (const test of tests) {
+    const testLogger = new ProgressLogger(['🏃 Running tests·..', '🏃 Running tests.·.', '🏃 Running tests..·'])
+    testLogger.start()
     const process = Deno.run({
       cmd: [
         'deno',
@@ -51,6 +53,8 @@ try {
     })
 
     const { code } = await process.status();
+
+    testLogger.stop()
 
     if (code !== 0) {
       const msg = new TextDecoder().decode(await process.stderrOutput())

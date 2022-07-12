@@ -1,3 +1,5 @@
+import { ProgressLogger } from "../types/index.ts";
+
 /**
  * Get all tests from a directory
  * @param directory root directory to start gathering tests
@@ -5,6 +7,8 @@
  */
 export default async function getTests(directory = ".") {
   let tests: string[] = [];
+  const logger = new ProgressLogger(['⏳ Load tests..', '⏳ Load tests.·.', '⏳ Load tests..·'])
+  logger.start()
 
   try {
     for await (const entry of Deno.readDir(directory)) {
@@ -20,6 +24,9 @@ export default async function getTests(directory = ".") {
   }
   catch (e) {
     console.error(e)
+  }
+  finally {
+    logger.stop()
   }
 
   return tests;
